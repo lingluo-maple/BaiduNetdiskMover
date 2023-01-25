@@ -39,3 +39,23 @@ pip install loguru
 ### config.example.py
 
 您需要在该文件中填写相关配置
+详情请查看 `config.example.py`
+填写完毕后，将 `config.example.py` 重命名为 `config.py`
+
+## 运行
+使用 `tmux` 或 `screen` 将程序放到后台运行
+此次以 `tmux` 为例
+
+```bash
+tmux new -s monitor
+python monitor.py
+CTRL+b d
+```
+`monitor.py` 会根据log文件，监视文件是否上传完毕，删除已上传的文件
+如果您在其他地方用的Onedrive，请考虑使用一个新的用户 (sudo adduser)
+
+```bash
+tmux new -s baidu
+python main.py
+CTRL+b d
+```
