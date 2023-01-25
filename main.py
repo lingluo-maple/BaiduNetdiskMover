@@ -96,6 +96,7 @@ def main():
         while not check_storage_enough():
             ...
         download(file)
+        time.sleep(config.delay)
          
     
 def download(file: Union[Path, str]):
