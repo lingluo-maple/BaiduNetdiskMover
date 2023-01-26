@@ -32,7 +32,7 @@ onedrive --monitor --upload-only --no-remote-delete --enable-logging
 
 ### Python
 
-Python 版本要求大于或等于 3.9， 使用 `python -V` 来确认Python的版本
+Python 版本要求大于或等于 3.7， 使用 `python -V` 来确认Python的版本
 
 如果python版本开头为2，可以尝试改为 `python3 -V`, 同时下文的 python pip 也改为 python3 pip3
 
