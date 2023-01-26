@@ -64,7 +64,7 @@ def check_storage_enough() -> bool:
 def get_downloaded_list() -> List[str]:
     if not (file:= Path("downloaded.txt")).exists():
         file.touch()
-    with open(file, "r") as f:
+    with open(file, "r", encoding="utf8") as f:
         return [i for i in f.read().split("\n") if i != ""]
     
 def get_file_list(directory: Union[Path, str]):
@@ -90,13 +90,15 @@ def main():
         get_file_list(directory)
     downloaded = get_downloaded_list()
     logger.info(f"Try to download {len(files)} file(s). {len(downloaded)} are already downloaded.")
-    for file in files:
-        if file in downloaded:
-            continue
-        while not check_storage_enough():
-            ...
-        download(file)
-        time.sleep(config.delay)
+    with open("downloaded.txt", "a", encoding="utf8") as f:
+        for file in files:
+            if file in downloaded:
+                continue
+            while not check_storage_enough():
+                ...
+            download(file)
+            f.write(f"{file}\n")
+            time.sleep(config.delay)
          
     
 def download(file: Union[Path, str]):
